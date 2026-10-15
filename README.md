@@ -283,7 +283,7 @@ Las imágenes se encuentran en la carpeta `evidencias/` del repositorio.
 
 ### 8.5. Casos de prueba
 
-![Casos de prueba](evidencias/Casos_Pueba.png)
+![Casos de prueba](evidencias/Casos_Prueba.png)
 
 ### 8.6. Diagrama de clases
 
