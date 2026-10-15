@@ -1,5 +1,6 @@
 # Implementación de un árbol binario en Java
 
+**Autor:** Joel Tisalema
 **Asignatura:** Estructura de Datos
 **Nivel:** Tercero – Ingeniería de Software
 **Modalidad:** Individual
@@ -17,15 +18,11 @@ Implementar un árbol binario utilizando programación orientada a objetos en Ja
 
 ### Sistema de organización jerárquica de departamentos universitarios
 
-El proyecto consiste en desarrollar una aplicación Java que represente la organización de las dependencias académicas de una universidad mediante un árbol binario.
+El proyecto consiste en una aplicación Java que representa la organización de las dependencias académicas de una universidad mediante un árbol binario.
 
-Cada nodo almacena el nombre de una dependencia universitaria y puede contener como máximo dos hijos: izquierdo y derecho.
-
-La aplicación permite construir, visualizar y analizar la estructura jerárquica mediante un menú interactivo en consola.
+Cada nodo almacena el nombre de una dependencia y puede tener como máximo dos hijos: izquierdo y derecho. La aplicación permite construir, visualizar y analizar la estructura mediante un menú interactivo en consola.
 
 ## 3. Estructura inicial del árbol binario
-
-La estructura inicial representa las dependencias académicas de una universidad de la siguiente manera:
 
 ```text
                  UNIVERSIDAD
@@ -52,14 +49,14 @@ La estructura inicial representa las dependencias académicas de una universidad
 
 **Nodos internos:** UNIVERSIDAD, FISEI, SOFTWARE y DIDE.
 
-La altura se calcula contando las aristas del camino más largo desde la raíz hasta una hoja.
+La altura se calcula contando las aristas del camino más largo desde la raíz hasta una hoja: UNIVERSIDAD → FISEI → SOFTWARE → NIVEL1.
 
 ## 4. Organización del proyecto
 
-El proyecto está organizado en tres paquetes, aplicando los principios de programación orientada a objetos.
+El código está organizado en tres paquetes:
 
 ```text
-T6-ArbolBinario-ApellidoNombre/
+T6-ArbolBinario-TisalemaJoel/
 │
 ├── src/
 │   ├── modelo/
@@ -84,22 +81,18 @@ T6-ArbolBinario-ApellidoNombre/
 
 ### 4.1. Clase Nodo.java — Paquete modelo
 
-La clase genérica `Nodo<T>` representa cada elemento del árbol binario.
+Clase genérica `Nodo<T>` que representa cada elemento del árbol.
 
-Sus principales atributos y métodos son:
-
-* `dato`: almacena la información del nodo.
+* `dato`: información almacenada en el nodo.
 * `izquierdo`: referencia al hijo izquierdo.
 * `derecho`: referencia al hijo derecho.
-* `esHoja()`: determina si el nodo no tiene hijos.
-* `grado()`: devuelve el número de hijos del nodo.
-* Getters y setters para consultar y modificar sus atributos.
+* `esHoja()`: indica si el nodo no tiene hijos.
+* `grado()`: devuelve el número de hijos del nodo (0, 1 o 2).
+* Getters y setters de sus atributos.
 
 ### 4.2. Clase ArbolBinario.java — Paquete negocio
 
-Esta clase administra la estructura y las operaciones del árbol binario.
-
-Implementa las siguientes funcionalidades:
+Administra la estructura y las operaciones del árbol.
 
 * `crearRaiz(dato)`: crea la raíz del árbol.
 * `agregarIzquierdo(padre, dato)`: agrega un hijo izquierdo.
@@ -109,64 +102,53 @@ Implementa las siguientes funcionalidades:
 * `altura()`: calcula la altura del árbol en aristas.
 * `esVacio()`: verifica si el árbol está vacío.
 * `mostrarArbol()`: presenta la estructura del árbol en consola.
+* `buscar(dato)`: localiza un nodo por su nombre, usado por el menú para consultar grado y hojas.
 
-Las operaciones de conteo de nodos, conteo de hojas y cálculo de altura utilizan recursividad.
-
-Además, las operaciones de inserción deben comprobar que la posición correspondiente esté disponible antes de agregar un nuevo nodo.
+El conteo de nodos, el conteo de hojas y la altura se implementan con **recursividad**. Las operaciones de inserción comprueban que la posición esté libre; si está ocupada, lanzan una `IllegalStateException` y la estructura original no se modifica.
 
 ### 4.3. Clase Main.java — Paquete app
 
-La clase `Main.java` contiene el método principal `main()` y permite interactuar con el usuario mediante la clase `Scanner`.
-
-Presenta un menú de opciones para construir el árbol, visualizarlo, consultar sus propiedades y ejecutar las operaciones disponibles.
+Contiene el método `main()` y el menú interactivo, que usa `Scanner` para leer las opciones del usuario. También incluye la construcción del árbol inicial y la ejecución de los casos de prueba.
 
 ## 5. Funcionalidades del programa
 
-El sistema dispone del siguiente menú interactivo:
-
 ```text
-========================================
-       SISTEMA DE ARBOL BINARIO
-========================================
-
-1. Crear el arbol inicial
-2. Visualizar el arbol
-3. Consultar numero de nodos
-4. Consultar numero de hojas
-5. Consultar altura del arbol
+===== ORGANIZACIÓN DE DEPARTAMENTOS =====
+1. Crear el árbol inicial
+2. Visualizar el árbol
+3. Consultar número de nodos
+4. Consultar número de hojas
+5. Consultar altura
 6. Consultar grado de un nodo
 7. Verificar si un nodo es hoja
-8. Salir
-
-========================================
-Seleccione una opcion:
+8. Ejecutar casos de prueba
+0. Salir
+Seleccione una opción:
 ```
 
-### Operaciones disponibles
+| Opción | Operación                  | Descripción                                                          |
+| :----: | -------------------------- | -------------------------------------------------------------------- |
+| 1      | Crear árbol inicial        | Construye la estructura universitaria de 9 nodos.                    |
+| 2      | Visualizar árbol           | Dibuja la jerarquía en consola, con (I) izquierdo y (D) derecho.     |
+| 3      | Consultar número de nodos  | Obtiene el total de nodos.                                           |
+| 4      | Consultar número de hojas  | Obtiene el número de nodos sin hijos.                                |
+| 5      | Consultar altura           | Camino más largo desde la raíz hasta una hoja, medido en aristas.    |
+| 6      | Consultar grado de un nodo | Indica cuántos hijos tiene el nodo cuyo nombre se ingresa.           |
+| 7      | Verificar si es hoja       | Indica si el nodo ingresado carece de hijos.                         |
+| 8      | Ejecutar casos de prueba   | Ejecuta los cinco casos de prueba obligatorios.                      |
+| 0      | Salir                      | Finaliza el programa.                                                |
 
-| Operación        | Descripción                                                                    |
-| ---------------- | ------------------------------------------------------------------------------ |
-| Crear árbol      | Construye la estructura universitaria inicial.                                 |
-| Visualizar árbol | Muestra los nodos y sus relaciones jerárquicas.                                |
-| Contar nodos     | Obtiene el total de nodos del árbol.                                           |
-| Contar hojas     | Obtiene el número de nodos sin hijos.                                          |
-| Calcular altura  | Determina el camino más largo desde la raíz hasta una hoja, medido en aristas. |
-| Consultar grado  | Determina cuántos hijos tiene un nodo específico.                              |
-| Verificar hoja   | Comprueba si un nodo carece de hijos.                                          |
-| Salir            | Finaliza la ejecución del programa.                                            |
+Si se consulta un nodo antes de crear el árbol, o un nombre que no existe, el programa muestra un mensaje en lugar de fallar.
 
 ## 6. Instrucciones de instalación y ejecución
 
 ### 6.1. Requisitos previos
 
-Para ejecutar el proyecto se necesita:
-
 * Java JDK instalado.
-* Visual Studio Code.
-* Extensión Extension Pack for Java en Visual Studio Code.
-* Git instalado, si se desea clonar el repositorio desde la terminal.
+* Visual Studio Code con la extensión *Extension Pack for Java*.
+* Git, si se desea clonar el repositorio desde la terminal.
 
-Para comprobar que Java está instalado, ejecutar:
+Para comprobar que Java está instalado:
 
 ```bash
 java -version
@@ -175,225 +157,192 @@ javac -version
 
 ### 6.2. Clonar el repositorio
 
-Reemplazar la dirección de ejemplo por la URL real del repositorio de GitHub.
-
 ```bash
-git clone https://github.com/USUARIO/T6-ArbolBinario-ApellidoNombre.git
+git clone https://github.com/TU_USUARIO/T6-ArbolBinario-TisalemaJoel.git
+cd T6-ArbolBinario-TisalemaJoel
 ```
 
-### 6.3. Acceder a la carpeta del proyecto
+### 6.3. Compilar las clases
+
+Desde la carpeta principal del proyecto:
 
 ```bash
-cd T6-ArbolBinario-ApellidoNombre
+javac -encoding UTF-8 -d bin src/modelo/Nodo.java src/negocio/ArbolBinario.java src/app/Main.java
 ```
 
-### 6.4. Compilar las clases
+Este comando compila las tres clases y guarda los archivos `.class` en la carpeta `bin`.
 
-Desde la carpeta principal del proyecto, ejecutar:
-
-```bash
-javac -d bin src/modelo/Nodo.java src/negocio/ArbolBinario.java src/app/Main.java
-```
-
-Este comando compila las tres clases y coloca los archivos `.class` generados en la carpeta `bin`.
-
-### 6.5. Ejecutar el programa
+### 6.4. Ejecutar el programa
 
 ```bash
 java -cp bin app.Main
 ```
 
-También es posible abrir el proyecto en Visual Studio Code y ejecutar la clase `Main.java`.
+Si las tildes se ven mal en la terminal, ejecutar con:
 
-**Nota:** los comandos de compilación y ejecución suponen que las clases declaran los paquetes `modelo`, `negocio` y `app`, respectivamente.
+```bash
+java -Dfile.encoding=UTF-8 -cp bin app.Main
+```
+
+También es posible abrir el proyecto en Visual Studio Code y ejecutar `Main.java` con el botón **Run**.
 
 ## 7. Casos de prueba
 
-Se consideran cinco casos de prueba obligatorios para verificar el comportamiento del programa.
+Los cinco casos obligatorios se ejecutan desde la **opción 8** del menú.
 
 ### 7.1. Prueba 1: árbol vacío
 
-**Objetivo:** comprobar el comportamiento del árbol antes de crear la raíz.
-
-**Resultado esperado:**
+**Resultado obtenido:**
 
 ```text
-Numero de nodos: 0
-Numero de hojas: 0
-Altura del arbol: -1
+[1] Árbol vacío
+Nodos: 0 (esperado 0)
+Altura: -1 (esperado -1)
+¿Vacío?: true
 ```
 
-Cuando el árbol está vacío, no existen nodos ni hojas. La altura es `-1` porque se utiliza la convención de medirla en aristas.
+Sin raíz no existen nodos ni hojas. La altura es `-1` porque se mide en aristas.
 
 ### 7.2. Prueba 2: árbol con un solo nodo
 
-**Objetivo:** verificar el comportamiento del árbol cuando contiene únicamente la raíz.
-
-**Resultado esperado:**
+**Resultado obtenido:**
 
 ```text
-Numero de nodos: 1
-Numero de hojas: 1
-Altura del arbol: 0
+[2] Árbol con un solo nodo
+Hojas: 1 (esperado 1)
+Altura: 0 (esperado 0)
 ```
 
-La raíz es también una hoja porque no tiene hijos. Su altura es cero, ya que no existe ninguna arista que recorrer.
+La raíz es también una hoja porque no tiene hijos, y su altura es 0 porque no hay aristas que recorrer.
 
 ### 7.3. Prueba 3: árbol universitario inicial
 
-**Objetivo:** comprobar que la estructura inicial se construya correctamente.
-
-**Resultado esperado:**
+**Resultado obtenido:**
 
 ```text
-Numero de nodos: 9
-Numero de hojas: 5
-Altura del arbol: 3
+[3] Árbol inicial
+Nodos: 9 (esperado 9)
+Hojas: 5 (esperado 5)
+Altura: 3 (esperado 3)
 ```
-
-Las hojas son NIVEL1, NIVEL3, TI, INVEST. y VINCULACIÓN.
 
 ### 7.4. Prueba 4: inserción en una posición ocupada
 
-**Objetivo:** verificar que no se permita insertar un nodo en una posición que ya contiene un hijo.
+**Procedimiento:** con el árbol inicial creado, se intenta agregar un nuevo hijo izquierdo a FISEI, cuya posición izquierda ya está ocupada por SOFTWARE.
 
-**Procedimiento:**
+**Resultado obtenido:**
 
-1. Crear el árbol inicial.
-2. Intentar agregar un nuevo hijo izquierdo a UNIVERSIDAD, cuya posición izquierda ya está ocupada por FISEI.
-3. Comprobar que la operación sea rechazada.
+```text
+[4] Insertar en posición ocupada
+Correcto, se rechazó la inserción: La posición izquierda de 'FISEI' ya está ocupada por 'SOFTWARE'.
+```
 
-**Resultado esperado:** el programa informa que la posición está ocupada y conserva la estructura original del árbol.
+La inserción es rechazada y el árbol conserva su estructura original.
 
 ### 7.5. Prueba 5: consulta del grado de los nodos
 
-**Objetivo:** comprobar el número de hijos de diferentes nodos.
+**Resultado obtenido en la opción 8:**
+
+```text
+[5] Grado de nodos
+Grado de FISEI: 2 (esperado 2)
+Grado de SOFTWARE: 2 (esperado 2)
+```
+
+Con la opción 6 del menú se pueden consultar otros nodos:
 
 | Nodo        | Grado esperado |
 | ----------- | -------------: |
 | UNIVERSIDAD |              2 |
 | FISEI       |              2 |
 | SOFTWARE    |              2 |
-| TI          |              0 |
 | DIDE        |              2 |
+| TI          |              0 |
 | NIVEL1      |              0 |
 | NIVEL3      |              0 |
 
-El grado de un nodo corresponde al número de hijos que posee. En un árbol binario, su valor puede ser 0, 1 o 2.
-
 ## 8. Evidencias de ejecución
 
-En esta sección se presentan las capturas de pantalla que demuestran el funcionamiento de la aplicación y la ejecución de los casos de prueba.
-
-Las imágenes se encuentran almacenadas en la carpeta `evidencias/` del repositorio.
+Las imágenes se encuentran en la carpeta `evidencias/` del repositorio.
 
 ### 8.1. Menú principal
-
-Captura del menú interactivo que permite seleccionar las operaciones del programa.
 
 ![Menú principal](evidencias/menu.png)
 
 ### 8.2. Visualización del árbol inicial
 
-Captura de la estructura jerárquica de los departamentos universitarios después de crear el árbol inicial.
-
 ![Árbol binario inicial](evidencias/arbol-inicial.png)
 
 ### 8.3. Prueba del árbol vacío
-
-Captura de los resultados obtenidos al consultar un árbol sin nodos.
 
 ![Árbol vacío](evidencias/arbol-vacio.png)
 
 ### 8.4. Prueba de un solo nodo
 
-Captura de los resultados obtenidos al trabajar con un árbol que contiene únicamente la raíz.
-
 ![Árbol con un nodo](evidencias/arbol-un-nodo.png)
 
 ### 8.5. Validación de posición ocupada
-
-Captura del intento de inserción en una posición que ya contiene un hijo y del rechazo de la operación.
 
 ![Inserción inválida](evidencias/insercion-invalida.png)
 
 ### 8.6. Consultas de nodos, hojas, altura y grado
 
-Captura de las consultas realizadas sobre la estructura inicial del árbol.
-
 ![Consultas del árbol](evidencias/consultas.png)
 
 ## 9. Restricciones de implementación
 
-El desarrollo del proyecto considera las siguientes restricciones:
-
-* Implementar el árbol binario mediante clases propias.
-* Aplicar los principios de programación orientada a objetos.
-* Utilizar la clase genérica `Nodo<T>`.
-* Organizar el código en los paquetes `modelo`, `negocio` y `app`.
-* Implementar mediante recursividad el conteo de nodos, el conteo de hojas y el cálculo de altura.
-* Utilizar `Scanner` para la interacción con el usuario.
-* Validar las posiciones de inserción para impedir que se sobrescriban los hijos existentes.
-* No utilizar `TreeSet`, `TreeMap`, `PriorityQueue`, `NavigableSet` ni `NavigableMap`.
+* Árbol implementado con clases propias y programación orientada a objetos.
+* Clase genérica `Nodo<T>`.
+* Código organizado en los paquetes `modelo`, `negocio` y `app`.
+* Conteo de nodos, conteo de hojas y altura implementados con recursividad.
+* Interacción con el usuario mediante `Scanner`.
+* Validación de posiciones de inserción para no sobrescribir hijos existentes.
+* No se utilizan `TreeSet`, `TreeMap`, `PriorityQueue`, `NavigableSet` ni `NavigableMap`.
 
 ## 10. Preguntas de reflexión
 
 ### 10.1. ¿Por qué la altura de un árbol binario depende del camino más largo desde la raíz hasta una hoja?
 
-La altura representa la máxima profundidad que alcanza el árbol. Por esta razón, se determina contando las aristas del camino más largo desde la raíz hasta una hoja. Esta medida permite conocer la profundidad máxima de la estructura y comprender cómo se distribuyen sus nodos.
+La altura mide cuántas aristas hay que recorrer para llegar al nodo más profundo. Si el árbol tiene varias ramas, las más cortas no cambian ese valor: solo cuenta la más larga. En este proyecto, el camino UNIVERSIDAD → FISEI → SOFTWARE → NIVEL1 tiene 3 aristas, mientras que el camino por DIDE tiene solo 2, por lo que la altura es 3.
 
-En este proyecto, la altura del árbol inicial es de tres aristas. Si el árbol está vacío, su altura es `-1`; si contiene únicamente la raíz, su altura es `0`.
+Esto se refleja en la recursividad implementada: la altura de un nodo es 1 más el máximo entre la altura de sus dos hijos, y un nodo nulo devuelve `-1`, de modo que un árbol con un solo nodo tiene altura 0.
 
 ### 10.2. ¿Qué diferencias existen entre almacenar información en una lista enlazada y en un árbol binario?
 
-Una lista enlazada organiza sus elementos de manera secuencial mediante referencias entre nodos. En cambio, un árbol binario organiza los elementos jerárquicamente, permitiendo que cada nodo tenga como máximo dos hijos.
+En una lista enlazada cada nodo apunta solo al siguiente, por lo que los datos quedan en una sola línea y para llegar a un elemento hay que recorrer los anteriores. En un árbol binario cada nodo puede tener dos hijos, así que los datos se organizan en niveles y se puede representar una relación jerárquica de padres e hijos, como la de las dependencias de la universidad, algo que una lista no expresa de forma natural.
 
-La lista enlazada resulta útil cuando se necesita recorrer elementos en secuencia. El árbol binario permite representar relaciones entre padres e hijos y estructuras jerárquicas. Además, si se implementa como un árbol binario de búsqueda y mantiene una estructura equilibrada, puede facilitar las operaciones de búsqueda, inserción y eliminación.
+Además, en un árbol equilibrado la cantidad de pasos para llegar a un dato crece con la altura y no con el total de elementos, lo que lo hace más eficiente para buscar. La contrapartida es que el árbol es más complejo de implementar y recorrer, ya que requiere recursividad o estructuras auxiliares.
 
 ### 10.3. ¿Cómo podría utilizarse un árbol binario en el proyecto integrador SmartETL para organizar o buscar registros?
 
-En SmartETL, un árbol binario de búsqueda podría utilizarse para organizar registros mediante claves, como identificadores o fechas. Esto permitiría localizar información y realizar inserciones durante los procesos de extracción, transformación y carga de datos.
+Un proceso ETL maneja grandes cantidades de registros que se extraen, transforman y cargan. Un árbol binario de búsqueda podría indexar los registros por una clave (por ejemplo, un identificador o una fecha), de modo que buscar un registro o detectar duplicados durante la transformación no requiera revisar todos los datos uno por uno.
 
-Por ejemplo, cada nodo podría almacenar el identificador de un registro y utilizar sus hijos para organizar otros identificadores según su valor. Para mantener un buen rendimiento cuando aumenta la cantidad de registros, sería conveniente utilizar un árbol balanceado. La estructura seleccionada dependería de las operaciones y necesidades específicas de SmartETL.
+También podría organizar la información de forma jerárquica, por ejemplo fuente de datos, tabla y campo, como en este proyecto se organizan las dependencias universitarias. Para mantener un buen rendimiento cuando crece la cantidad de registros, el árbol debería mantenerse equilibrado.
 
 ## 11. Conclusiones
 
-La implementación de un árbol binario permite comprender el funcionamiento de las estructuras de datos jerárquicas y su aplicación en situaciones reales.
+La implementación de un árbol binario permite comprender cómo funcionan las estructuras de datos jerárquicas y refuerza la programación orientada a objetos, el uso de referencias entre nodos, la recursividad y la organización modular del código en paquetes.
 
-El proyecto refuerza los conocimientos de programación orientada a objetos, el uso de referencias entre nodos, la recursividad y la organización modular del código mediante paquetes.
-
-Asimismo, permite analizar propiedades fundamentales de los árboles, como el número de nodos, la cantidad de hojas, el grado de cada nodo y la altura de la estructura.
-
-Finalmente, las pruebas permiten comprobar el comportamiento del programa ante diferentes situaciones, como un árbol vacío, un árbol con una sola raíz y un intento de inserción en una posición ocupada.
+También permite analizar propiedades fundamentales del árbol, como el número de nodos, las hojas, el grado de cada nodo y la altura. Las pruebas confirmaron el comportamiento correcto ante un árbol vacío, un árbol con una sola raíz y un intento de inserción en una posición ocupada.
 
 ## 12. Tecnologías utilizadas
 
-* **Java:** desarrollo de la aplicación.
-* **Java JDK:** compilación y ejecución del código.
+* **Java** y **Java JDK:** desarrollo, compilación y ejecución.
 * **Visual Studio Code:** entorno de desarrollo.
-* **Git:** control de versiones.
-* **GitHub:** almacenamiento del repositorio y documentación del proyecto.
-* **Markdown:** elaboración del archivo README.
+* **Git** y **GitHub:** control de versiones y alojamiento del repositorio.
+* **Markdown:** elaboración de este README.
 
-## 13. Repositorio y control de versiones
+## 13. Control de versiones
 
-El proyecto debe publicarse en un repositorio público de GitHub con el nombre:
-
-`T6-ArbolBinario-ApellidoNombre`
-
-El historial debe incluir al menos tres commits significativos que evidencien el proceso de desarrollo individual.
-
-Ejemplos de mensajes de commit:
+El repositorio incluye al menos tres commits significativos que muestran el desarrollo individual del proyecto, por ejemplo:
 
 ```text
-git commit -m "Crear clase generica Nodo"
-git commit -m "Implementar operaciones recursivas del arbol"
-git commit -m "Agregar menu interactivo y documentacion README"
+Crear clase generica Nodo
+Implementar operaciones recursivas del arbol
+Agregar menu interactivo y documentacion README
 ```
 
-Estos comandos son ejemplos de mensajes. Para registrar cada commit, primero se deben agregar los archivos correspondientes y ejecutar `git commit` después de realizar los cambios.
-
-**Enlace al repositorio:** [Agregar aquí la URL real del repositorio de GitHub]
+**Enlace al repositorio:** https://github.com/TU_USUARIO/T6-ArbolBinario-TisalemaJoel
 
 ---
 
