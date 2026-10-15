@@ -69,12 +69,12 @@ T6-ArbolBinario-TisalemaJoel/
 │       └── Main.java
 │
 ├── evidencias/
-│   ├── menu.png
-│   ├── arbol-inicial.png
-│   ├── arbol-vacio.png
-│   ├── arbol-un-nodo.png
-│   ├── insercion-invalida.png
-│   └── consultas.png
+│   ├── Menu_principal.png
+│   ├── Arbol_inicial.png
+│   ├── Consulta_Nodos.png
+│   ├── Consulta_GradoNodo.png
+│   ├── Casos de prueba.png
+│   └── Diagrama_de_Clases.png
 │
 └── README.md
 ```
