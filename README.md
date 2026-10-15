@@ -273,17 +273,21 @@ Las imágenes se encuentran en la carpeta `evidencias/` del repositorio.
 
 ![Árbol binario inicial](evidencias/Arbol_inicial.png)
 
-### 8.3. Prueba del árbol vacío
+### 8.3. Consulta de nodos, hojas y altura
 
-![Árbol vacío](evidencias/Casos_Prueba.png)
+![Consulta de nodos](evidencias/Consulta_Nodos.png)
 
-### 8.4. Prueba de un solo nodo
+### 8.4. Consulta del grado de un nodo y verificación de hojas
 
-![Árbol con un nodo](evidencias/Consulta_Nodos.png)
+![Consulta de grado de nodo](evidencias/Consulta_GradoNodo.png)
 
-### 8.5. Consultas de nodos, hojas, altura y grado
+### 8.5. Casos de prueba
 
-![Consultas del árbol](evidencias/Consulta_GradoNodo.png)
+![Casos de prueba](evidencias/Casos%20de%20prueba.png)
+
+### 8.6. Diagrama de clases
+
+![Diagrama de clases](evidencias/Diagrama_de_Clases.png)
 
 ## 9. Restricciones de implementación
 
