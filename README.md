@@ -158,7 +158,7 @@ javac -version
 ### 6.2. Clonar el repositorio
 
 ```bash
-git clone https://github.com/TU_USUARIO/T6-ArbolBinario-TisalemaJoel.git
+git clone https://github.com/Joel03032007/T6-ArbolBinario-TisalemaJoel
 cd T6-ArbolBinario-TisalemaJoel
 ```
 
@@ -267,27 +267,23 @@ Las imágenes se encuentran en la carpeta `evidencias/` del repositorio.
 
 ### 8.1. Menú principal
 
-![Menú principal](evidencias/menu.png)
+![Menú principal](evidencias/Menu_principal.png)
 
 ### 8.2. Visualización del árbol inicial
 
-![Árbol binario inicial](evidencias/arbol-inicial.png)
+![Árbol binario inicial](evidencias/Arbol_inicial.png)
 
 ### 8.3. Prueba del árbol vacío
 
-![Árbol vacío](evidencias/arbol-vacio.png)
+![Árbol vacío](evidencias/Casos_Prueba.png)
 
 ### 8.4. Prueba de un solo nodo
 
-![Árbol con un nodo](evidencias/arbol-un-nodo.png)
+![Árbol con un nodo](evidencias/Consulta_Nodos.png)
 
-### 8.5. Validación de posición ocupada
+### 8.5. Consultas de nodos, hojas, altura y grado
 
-![Inserción inválida](evidencias/insercion-invalida.png)
-
-### 8.6. Consultas de nodos, hojas, altura y grado
-
-![Consultas del árbol](evidencias/consultas.png)
+![Consultas del árbol](evidencias/Consulta_GradoNodo.png)
 
 ## 9. Restricciones de implementación
 
