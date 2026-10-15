@@ -342,7 +342,7 @@ Implementar operaciones recursivas del arbol
 Agregar menu interactivo y documentacion README
 ```
 
-**Enlace al repositorio:** https://github.com/TU_USUARIO/T6-ArbolBinario-TisalemaJoel
+**Enlace al repositorio:** https://github.com/Joel03032007/T6-ArbolBinario-TisalemaJoel
 
 ---
 
