@@ -139,23 +139,23 @@ public class Main {
         // 1. Árbol vacío: 0 nodos y altura -1
         ArbolBinario<String> vacio = new ArbolBinario<>();
         System.out.println("\n[1] Árbol vacío");
-        System.out.println("Nodos: " + vacio.contarNodos() + " (esperado 0)");
-        System.out.println("Altura: " + vacio.altura() + " (esperado -1)");
+        System.out.println("Nodos: " + vacio.contarNodos());
+        System.out.println("Altura: " + vacio.altura());
         System.out.println("¿Vacío?: " + vacio.esVacio());
 
         // 2. Un solo nodo: 1 hoja y altura 0
         ArbolBinario<String> unico = new ArbolBinario<>();
         unico.crearRaiz("RAIZ");
         System.out.println("\n[2] Árbol con un solo nodo");
-        System.out.println("Hojas: " + unico.contarHojas() + " (esperado 1)");
-        System.out.println("Altura: " + unico.altura() + " (esperado 0)");
+        System.out.println("Hojas: " + unico.contarHojas());
+        System.out.println("Altura: " + unico.altura());
 
         // 3. Árbol inicial: 9 nodos, 5 hojas, altura 3
         ArbolBinario<String> inicial = construirArbolInicial();
         System.out.println("\n[3] Árbol inicial");
-        System.out.println("Nodos: " + inicial.contarNodos() + " (esperado 9)");
-        System.out.println("Hojas: " + inicial.contarHojas() + " (esperado 5)");
-        System.out.println("Altura: " + inicial.altura() + " (esperado 3)");
+        System.out.println("Nodos: " + inicial.contarNodos());
+        System.out.println("Hojas: " + inicial.contarHojas());
+        System.out.println("Altura: " + inicial.altura());
 
         // 4. Insertar en una posición ocupada: debe lanzar excepción y capturarla
         System.out.println("\n[4] Insertar en posición ocupada");
@@ -168,7 +168,7 @@ public class Main {
 
         // 5. Grado de FISEI y SOFTWARE (ambos tienen 2 hijos)
         System.out.println("\n[5] Grado de nodos");
-        System.out.println("Grado de FISEI: " + inicial.buscar("FISEI").grado() + " (esperado 2)");
-        System.out.println("Grado de SOFTWARE: " + inicial.buscar("SOFTWARE").grado() + " (esperado 2)");
+        System.out.println("Grado de FISEI: " + inicial.buscar("FISEI").grado());
+        System.out.println("Grado de SOFTWARE: " + inicial.buscar("SOFTWARE").grado());
     }
 }
